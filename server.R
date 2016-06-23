@@ -1,10 +1,10 @@
+## Initialize environment
 library(lattice)
-# names <- c("-",letters)
-# probFinal <- read.csv("probFinal.csv",row.names=names,col.names=names)
-# probFinal <- as.matrix(probFinal)
 
+## Read source data
 probFinal <- readRDS("probFinal.rds")
 ps <- readRDS("ps.rds")
+
 ## Define a function that will convert character to ASCII and vice versa
 asc <- function(x) { strtoi(charToRaw(x),16L) }
 chr <- function(n) { rawToChar(as.raw(n)) }
@@ -24,8 +24,8 @@ generateWord <- function(smin,smax,totwords) {
       i <- j
       j <- k
     }
-    res <- substr(res, 1, nchar(res)-1) # remove the final \n
-    if (nchar(res) >= smin && nchar(res) <= smax) {
+    res <- substr(res, 1, nchar(res,allowNA = TRUE)-1) # remove the final \n
+    if (nchar(res,allowNA = TRUE) >= smin && nchar(res,allowNA = TRUE) <= smax) {
       print(res)
       curword %+=% 1
     }
