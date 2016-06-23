@@ -1,5 +1,11 @@
 ## Initialize environment
 library(lattice)
+library(lubridate)
+library(shiny)
+
+t <- now()
+seed <- hour(t)*minute(t)*floor(second(t))
+set.seed(seed)
 
 ## Read source data
 probFinal <- readRDS("probFinal.rds")
@@ -12,6 +18,7 @@ chr <- function(n) { rawToChar(as.raw(n)) }
 ## Define increment function
 `%+=%` = function(e1,e2) eval.parent(substitute(e1 <- e1 + e2))
 
+## Word generator 
 generateWord <- function(smin,smax,totwords) {
   curword <- 0
   while (curword < totwords) {
@@ -24,8 +31,9 @@ generateWord <- function(smin,smax,totwords) {
       i <- j
       j <- k
     }
-    res <- substr(res, 1, nchar(res,allowNA = TRUE)-1) # remove the final \n
-    if (nchar(res,allowNA = TRUE) >= smin && nchar(res,allowNA = TRUE) <= smax) {
+    Encoding(res) <- "latin1"
+    res <- substr(res, 1, nchar(res)-1) # remove the final \n
+    if (nchar(res) >= smin && nchar(res) <= smax) {
       print(res)
       curword %+=% 1
     }
@@ -33,7 +41,7 @@ generateWord <- function(smin,smax,totwords) {
 }
   
 
-library(shiny)
+
 shinyServer(
   function(input,output) {
     output$oid4 <- renderPrint({

@@ -24,7 +24,6 @@ shinyUI(pageWithSidebar(
     h3('Version'),
     p('Grégory Vial, 2016, June 23rd'),
     p('Sources: https://github.com/GregVial/WordGenerator'),
-    p('Known bugs: accents are not visible on the online version (although they do on the local version)'),
     p('The inspiration for this application comes from David Louapre: sciencetonnante@gmail.com')
   )
 ))

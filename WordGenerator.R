@@ -1,6 +1,6 @@
 ## Word generator
 ## Gregory Vial - 2016, June 23rd
-## R version of the generator designed by David Louapre
+## R version of the generator designed by David Louapre sciencetonnante@gmail.com
 ## See https://goo.gl/g0ULlN for more info on original idea
 
 ## Initialize environment
@@ -9,6 +9,11 @@ dir <- "C:/Users/vialgre/Desktop/DataScience/Building Data Products/WordGenerato
 setwd(dir)
 # Load packages
 library(lattice)
+library(lubridate)
+# Set the seed
+t <- now()
+seed <- hour(t)*minute(t)*floor(second(t))
+set.seed(seed)
 # Set min and max words length
 smin <- 4 # min number of letters
 smax <- 12 # max number of letters
@@ -39,7 +44,7 @@ for (wordInd in 1:inputLen) {
   i<-1 # last but one letter before k
   j<-1 # last letter before k
   k<-1 # current letter
-  #print(wordInd)
+  print(paste(wordInd,"out of 336531"))
   word <- paste0(input[wordInd,1],"\n")
   wordLen <- nchar(word)
   for (letterN in 1:wordLen) {
@@ -89,6 +94,7 @@ while (curword < totwords) {
     i <- j
     j <- k
   }
+  Encoding(res) <- "latin1"
   res <- substr(res, 1, nchar(res)-1) # remove the final \n
   if (nchar(res) >= smin && nchar(res) <= smax) {
     print(res)
