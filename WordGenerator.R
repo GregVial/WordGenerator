@@ -1,7 +1,9 @@
 ## Word generator
-## Gregory Vial - 2016, June 24rd
+## Gregory Vial - 2016, June 24th
 ## R version of the generator designed by David Louapre sciencetonnante@gmail.com
 ## See https://goo.gl/g0ULlN for more info on original idea
+
+## Run this program as many times as you want to generate new words!
 
 ## Initialize environment
 # Set working directory (set your own for this to work!)

@@ -47,11 +47,11 @@
     <h2>What does this product do?</h2>
   </hgroup>
   <article data-timings="">
-    <h3>Product description</h3>
+    <h2>Product description</h2>
 
 <p>This product generates french look-alike words.</p>
 
-<h3>Product features</h3>
+<h2>Product features</h2>
 
 <p>You can choose from various options:</p>
 
@@ -60,11 +60,11 @@
 <li>Number of words to be generated</li>
 </ol>
 
-<h3>Using this product</h3>
+<h2>Using this product</h2>
 
-<p>You can either download the R code &quot;WordGenerator.R&quot; from  <a href="https://github.com/GregVial/WordGenerator">GitHub</a> and run it on your own device. This will require updating the code (line 8) with your own working directory</p>
+<p>The simplest way is to access this application online on the <a href="https://gregv.shinyapps.io/WordGenerator/"> shiny server</a>. Please note that the application might not be up at all time due to limited available server time.</p>
 
-<p>Or you can use the application online on the <a href="https://gregv.shinyapps.io/WordGenerator/"> shiny server</a>. Please note that the application might not be up at all time due to limited available server time.</p>
+<p>Alternatively you can run it on your own machine. See last slide for details.</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -113,11 +113,21 @@ This was resolved by this simple piece of code.</p>
     <h2>More resources</h2>
   </hgroup>
   <article data-timings="">
-    <p>Shiny application available at <a href="https://gregv.shinyapps.io/WordGenerator/">https://gregv.shinyapps.io/WordGenerator/</a></p>
+    <h2>Links</h2>
+
+<p>Shiny application available at <a href="https://gregv.shinyapps.io/WordGenerator/">https://gregv.shinyapps.io/WordGenerator/</a></p>
 
 <p>Github repo with all sources available at <a href="https://github.com/GregVial/WordGenerator">https://github.com/GregVial/WordGenerator</a></p>
 
 <p>Original idea for this product by David Louapre <a href="mailto:sciencetonnante@gmail.com">sciencetonnante@gmail.com</a></p>
+
+<h2>Running this product on your machine</h2>
+
+<p>Download from  <a href="https://github.com/GregVial/WordGenerator">GitHub</a> the files WordGenerator.R and WordGeneratorPreProcessing.R on your device and update the code: line 10 of each file set workding directory to your own working directory</p>
+
+<p>Run WordGeneratorPreProcessing.R only once, it will create the probability array. Allow for some time to complete as it will have to process 330k+ entries.</p>
+
+<p>Then run &quot;WordGenerator.R&quot;  as many times as you want to generate words.</p>
 
   </article>
   <!-- Presenter Notes -->

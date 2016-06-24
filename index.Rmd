@@ -12,19 +12,19 @@ mode        : selfcontained # {standalone, draft}
 
 ## What does this product do?
 
-### Product description
+## Product description
 This product generates french look-alike words.
 
-### Product features
+## Product features
 You can choose from various options:
 
 1. Minimum and maximum length of the word to be generated
 2. Number of words to be generated
 
-### Using this product
-You can either download the R code "WordGenerator.R" from  <a href="https://github.com/GregVial/WordGenerator">GitHub</a> and run it on your own device. This will require updating the code (line 8) with your own working directory
+## Using this product
+The simplest way is to access this application online on the <a href="https://gregv.shinyapps.io/WordGenerator/"> shiny server</a>. Please note that the application might not be up at all time due to limited available server time.
 
-Or you can use the application online on the <a href="https://gregv.shinyapps.io/WordGenerator/"> shiny server</a>. Please note that the application might not be up at all time due to limited available server time.
+Alternatively you can run it on your own machine. See last slide for details.
 
 --- 
 
@@ -60,8 +60,16 @@ Encoding(res) <- "latin1"
 
 ## More resources
 
+## Links
 Shiny application available at https://gregv.shinyapps.io/WordGenerator/
 
 Github repo with all sources available at https://github.com/GregVial/WordGenerator
 
 Original idea for this product by David Louapre sciencetonnante@gmail.com
+
+## Running this product on your machine
+Download from  <a href="https://github.com/GregVial/WordGenerator">GitHub</a> the files WordGenerator.R and WordGeneratorPreProcessing.R on your device and update the code: line 10 of each file set workding directory to your own working directory
+
+Run WordGeneratorPreProcessing.R only once, it will create the probability array. Allow for some time to complete as it will have to process 330k+ entries.
+
+Then run "WordGenerator.R"  as many times as you want to generate words.
