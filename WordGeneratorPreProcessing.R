@@ -1,4 +1,4 @@
-## Word generator Preprocessing 
+## Word generator Preprocessing
 ## Gregory Vial - 2016, June 24rd
 ## R version of the generator designed by David Louapre sciencetonnante@gmail.com
 ## See https://goo.gl/g0ULlN for more info on original idea
