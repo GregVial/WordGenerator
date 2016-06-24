@@ -57,7 +57,7 @@ for (wordInd in 1:inputLen) {
   }
 }
 
-## Display bigram
+## Display matrix
 # Convert to two dimension by collapsing dimension i
 prob2d <- apply(prob,c(2,3),sum)
 # Extract only letters a to z and show word beginning/end as a dash
@@ -73,6 +73,10 @@ saveRDS(probFinal,"probFinal.rds")
 # Select palette and plot
 rgb.palette <- colorRampPalette(c("blue", "yellow","red"), space = "rgb")
 levelplot(probFinal,main="Letters sequence frequencies",xlab="This letter is followed ...",ylab="... by this letter",col.regions=rgb.palette(120))
+## Save th chart to file 
+dev.copy(png,file="matrix.png")
+dev.off()
+
 
 ## Generate words
 # Normalize the array

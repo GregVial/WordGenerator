@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Word Generator</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Word Generator">
+  <meta name="author" content="Gregory Vial">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="libraries/widgets/bootstrap/css/bootstrap.css"></link>
+<link rel=stylesheet href="libraries/widgets/quiz/css/demo.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Word Generator</h1>
+    <h2>2016, June 24th</h2>
+    <p>Gregory Vial<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>What does this product do?</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Product description</h3>
+
+<p>This product generates french look-alike words.</p>
+
+<h3>Product features</h3>
+
+<p>You can choose from various options:</p>
+
+<ol>
+<li>Minimum and maximum length of the word to be generated</li>
+<li>Number of words to be generated</li>
+</ol>
+
+<h3>Using this product</h3>
+
+<p>You can either download the R code &quot;WordGenerator.R&quot; from  <a href="https://github.com/GregVial/WordGenerator">GitHub</a> and run it on your own device. This will require updating the code (line 8) with your own working directory</p>
+
+<p>Or you can use the application online on the <a href="https://gregv.shinyapps.io/WordGenerator/"> shiny server</a>. Please note that the application might not be up at all time due to limited available server time.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>How does this product work?</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The application reads from a corpus of 300k+ words collected from french books. For each word the sequence of 2 and 3 letters are observed and their frequencies are recorded in a array. The chart below represents the frequencies of 2 letters sequences.</p>
+
+<p><center>
+<img src="matrix.png" style="width:350px;height:350px;">
+</center></p>
+
+<p>The product then uses a markov chain to generate a new sequence of letters that will ressemble that of regular french words. From time to time an existing word will be generated.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>More about the algorithm</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>We present below the code of the functions that convert character to ASCII and vice versa</p>
+
+<pre><code class="r">asc &lt;- function(x) { strtoi(charToRaw(x),16L) }
+chr &lt;- function(n) { rawToChar(as.raw(n)) }
+</code></pre>
+
+<p>In addition one of the challenge whilst developing this project was to get french accentuated letters to display correctly on any device.
+This was resolved by this simple piece of code.</p>
+
+<pre><code class="r">Encoding(res) &lt;- &quot;latin1&quot;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>More resources</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Shiny application available at <a href="https://gregv.shinyapps.io/WordGenerator/">https://gregv.shinyapps.io/WordGenerator/</a></p>
+
+<p>Github repo with all sources available at <a href="https://github.com/GregVial/WordGenerator">https://github.com/GregVial/WordGenerator</a></p>
+
+<p>Original idea for this product by David Louapre <a href="mailto:sciencetonnante@gmail.com">sciencetonnante@gmail.com</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='What does this product do?'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='How does this product work?'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='More about the algorithm'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='More resources'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  <script src="libraries/widgets/bootstrap/js/bootstrap.min.js"></script>
+<script src="libraries/widgets/bootstrap/js/bootbox.min.js"></script>
+<script src="libraries/widgets/quiz/js/jquery.quiz.js"></script>
+<script src="libraries/widgets/quiz/js/mustache.min.js"></script>
+<script src="libraries/widgets/quiz/js/quiz-app.js"></script>
+
+  <script>  
+  $(function (){ 
+    $("#example").popover(); 
+    $("[rel='tooltip']").tooltip(); 
+  });  
+  </script>  
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
