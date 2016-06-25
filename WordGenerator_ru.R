@@ -28,6 +28,8 @@ chr <- function(n) {
   intToUtf8(n+(1029+32))
 }
 
+## Define increment function
+`%+=%` = function(e1,e2) eval.parent(substitute(e1 <- e1 + e2))
 
 ## Generate words
 # Read frequency array

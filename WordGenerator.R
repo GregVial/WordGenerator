@@ -23,6 +23,9 @@ set.seed(seed)
 ## Define a function that will convert ASCII code to character 
 chr <- function(n) { rawToChar(as.raw(n)) }
 
+## Define increment function
+`%+=%` = function(e1,e2) eval.parent(substitute(e1 <- e1 + e2))
+
 ## Generate words
 # Read frequency array
 if (!exists("ps")) {
