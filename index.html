@@ -47,20 +47,21 @@
     <h2>What does this product do?</h2>
   </hgroup>
   <article data-timings="">
-    <h2>Product description</h2>
+    <h3>Product description</h3>
 
-<p>This product generates french look-alike words.</p>
+<p>This product generates french and russian look-alike words.</p>
 
-<h2>Product features</h2>
+<h3>Product features</h3>
 
 <p>You can choose from various options:</p>
 
 <ol>
+<li>Language: french or russian</li>
 <li>Minimum and maximum length of the word to be generated</li>
 <li>Number of words to be generated</li>
 </ol>
 
-<h2>Using this product</h2>
+<h3>Using this product</h3>
 
 <p>The simplest way is to access this application online on the <a href="https://gregv.shinyapps.io/WordGenerator/"> shiny server</a>. Please note that the application might not be up at all time due to limited available server time.</p>
 
@@ -75,13 +76,14 @@
     <h2>How does this product work?</h2>
   </hgroup>
   <article data-timings="">
-    <p>The application reads from a corpus of 300k+ words collected from french books. For each word the sequence of 2 and 3 letters are observed and their frequencies are recorded in a array. The chart below represents the frequencies of 2 letters sequences.</p>
+    <p>The application reads from a large corpus of french and russian words.
+For each word the sequence of 2 and 3 letters are observed and their frequencies are recorded in a array. The chart below represents the frequencies of 2 letters sequences (french).</p>
 
 <p><center>
-<img src="matrix.png" style="width:350px;height:350px;">
+<img src="matrix_fr.png" style="width:300px;height:300px;">
 </center></p>
 
-<p>The product then uses a markov chain to generate a new sequence of letters that will ressemble that of regular french words. From time to time an existing word will be generated.</p>
+<p>The product then uses a markov chain to generate a new sequence of letters that will ressemble that of regular french or russian words. From time to time an existing word will be generated.</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -89,7 +91,7 @@
 
 <slide class="" id="slide-3" style="background:;">
   <hgroup>
-    <h2>More about the algorithm</h2>
+    <h2>Encoding</h2>
   </hgroup>
   <article data-timings="">
     <p>We present below the code of the functions that convert character to ASCII and vice versa</p>
@@ -98,10 +100,14 @@
 chr &lt;- function(n) { rawToChar(as.raw(n)) }
 </code></pre>
 
-<p>In addition one of the challenge whilst developing this project was to get french accentuated letters to display correctly on any device.
+<p>In addition one of the challenge whilst developing this project was to get french accentuated letters as well as cyrillic to display correctly on any device.
 This was resolved by this simple piece of code.</p>
 
-<pre><code class="r">Encoding(res) &lt;- &quot;latin1&quot;
+<pre><code class="r">## French
+Encoding(res) &lt;- &quot;latin1&quot;
+Sys.setlocale(&quot;LC_CTYPE&quot;, &quot;french&quot;)
+## Russian
+Sys.setlocale(&quot;LC_CTYPE&quot;, &quot;russian&quot;)
 </code></pre>
 
   </article>
@@ -113,7 +119,7 @@ This was resolved by this simple piece of code.</p>
     <h2>More resources</h2>
   </hgroup>
   <article data-timings="">
-    <h2>Links</h2>
+    <h3>Links</h3>
 
 <p>Shiny application available at <a href="https://gregv.shinyapps.io/WordGenerator/">https://gregv.shinyapps.io/WordGenerator/</a></p>
 
@@ -121,13 +127,13 @@ This was resolved by this simple piece of code.</p>
 
 <p>Original idea for this product by David Louapre <a href="mailto:sciencetonnante@gmail.com">sciencetonnante@gmail.com</a></p>
 
-<h2>Running this product on your machine</h2>
+<h3>Running this product on your machine</h3>
 
-<p>Download from  <a href="https://github.com/GregVial/WordGenerator">GitHub</a> the files WordGenerator.R and WordGeneratorPreProcessing.R on your device and update the code: line 10 of each file set workding directory to your own working directory</p>
+<p>Download from  <a href="https://github.com/GregVial/WordGenerator">GitHub</a> the files &quot;WordGenerator.R&quot; and &quot;WordGeneratorPreProcessing.R&quot; on your device and update the code: line 10 of each file set workding directory to your own working directory</p>
 
-<p>Run WordGeneratorPreProcessing.R only once, it will create the probability array. Allow for some time to complete as it will have to process 330k+ entries.</p>
+<p>Run &quot;WordGeneratorPreProcessing.R&quot; only once, it will create the probability array. Allow for some time to complete as it will have to process 330k+ entries (french) and 130k+ entries (russian).</p>
 
-<p>Then run &quot;WordGenerator.R&quot;  as many times as you want to generate words.</p>
+<p>Then run &quot;WordGenerator.R&quot; as many times as you want to generate words.</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -151,7 +157,7 @@ This was resolved by this simple piece of code.</p>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=3 title='More about the algorithm'>
+        data-slide=3 title='Encoding'>
          3
       </a>
     </li>

@@ -1,5 +1,5 @@
 ## Word generator
-## Gregory Vial - 2016, June 24th
+## Gregory Vial - 2016, June 25th
 ## R version of the generator designed by David Louapre sciencetonnante@gmail.com
 ## See https://goo.gl/g0ULlN for more info on original idea
 
@@ -20,16 +20,22 @@ t <- now()
 seed <- hour(t)*minute(t)*floor(second(t))
 set.seed(seed)
 
-## Define a function that will convert ASCII code to character 
-chr <- function(n) { rawToChar(as.raw(n)) }
+## Define a function that will convert Unicode code to character 
+chr <- function(n) { 
+  if (n == 43) {
+    n <- n+1
+  } 
+  intToUtf8(n+(1029+32))
+}
+
 
 ## Generate words
 # Read frequency array
-if (!exists("ps")) {
-  if (!file.exists("ps_fr.rds")){
-    warning("File ps_fr.rds is not present in the working directly, ensure that you run WordGeneratorPreProcessing.R before running this program")
+if (!exists("ps_ru")) {
+  if (!file.exists("ps_ru.rds")){
+    warning("File ps.rds is not present in the working directly, ensure that you run WordGeneratorPreProcessing.R before running this program")
   } else {
-    ps <- readRDS("ps_fr.rds")
+    ps <- readRDS("ps_ru.rds")
   }
 }
 
@@ -40,12 +46,12 @@ while (curword < totwords) {
   i<-1
   j<-1
   while (j!=10) {
-    k <- sample(1:256,1,prob=ps[i,j,])
+    test <- 
+    k <- sample(1:44,1,prob=ps[i,j,])
     res <- paste0(res,chr(k))
     i <- j
     j <- k
   }
-  Encoding(res) <- "latin1"
   res <- substr(res, 1, nchar(res)-1) # remove the final \n
   if (nchar(res) >= smin && nchar(res) <= smax) {
     print(res)
