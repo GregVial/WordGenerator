@@ -12,6 +12,16 @@ setwd(dir)
 # Load packages
 library(lattice)
 
+## Load input
+inputSource <- "http://www.pallier.org/ressources/dicofr/liste.de.mots.francais.frgut.txt"
+inputName <- "liste.de.mots.francais.frgut.txt"
+if (!file.exists(inputName)){
+  download.file(url=inputSource,destfile=inputName)
+}
+input <- read.table(inputName,stringsAsFactors =  FALSE,skip=1)
+inputLen <-  dim(input)[1]
+
+
 ## Define functions that will convert character to ASCII code
 asc <- function(x) { strtoi(charToRaw(x),16L) }
 
