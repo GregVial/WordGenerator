@@ -10,6 +10,8 @@ https://gregv.shinyapps.io/WordGenerator/
 
 See documentation at https://gregvial.github.io/WordGenerator/
 
+greg_vial@hotmail.com
+
 ## Matrix of frequencies
 ### French
 ![Frequencies for 2 letters sequencies in French](matrix_fr.png?raw=true "Matrix fr")
